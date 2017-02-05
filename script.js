@@ -553,13 +553,11 @@ var roomArray = [
   ["Greystone Court Aprt","21","B",745,true,"12/14/15","01/13/18",457  ]
 ];
 
-var usedSpaces = 0;
-var unusedSpaces = roomArray.length - usedSpaces;
-var marketRent = 0;
-var actualRent = 0;
-
-
 function calculateVariables() {
+  var usedSpaces = 0;
+  var unusedSpaces = roomArray.length - usedSpaces;
+  var marketRent = 0;
+  var actualRent = 0;
   for(var i  = 0; i < roomArray.length ; i++) {
     marketRent += roomArray[i][3];
     if(roomArray[i][4]) {
@@ -568,7 +566,7 @@ function calculateVariables() {
       usedSpaces++;
     }
   }
-  console.log(actualRent);
+  return [marketRent, actualRent, usedSpaces, unusedSpaces];
 }
 
 function data() {
@@ -598,24 +596,24 @@ function data() {
     }
   }
 
-  calculateVariables();
-
-
+  updateCharts(calculateVariables());
 }
 
 
-$(document).ready(function() {
+function updateCharts(values) {
 
-  calculateVariables()
+  $("#myChart").replaceWith('<canvas id="myChart" width="500" height="500"></canvas>');
+  $("#pieChart").replaceWith('<canvas id="pieChart" width="500" height="500"></canvas>');
 
-  var ctx = document.getElementById("myChart");
+
+  var ctx = $("#myChart").get(0).getContext("2d");
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: ["Economic Utilization", "Market Rent"],
           datasets: [{
               label: '$',
-              data: [marketRent, actualRent],
+              data: [values[0], values[1]],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -639,20 +637,26 @@ $(document).ready(function() {
       }
   });
 
-  var ptx = document.getElementById("pieChart");
+  var ptx = $("#pieChart").get(0).getContext("2d");
   var pieChart = new Chart(ptx, {
     type:'pie',
     data:{
       labels: ["Occupied Rooms","Unoccupied Rooms"],
       datasets: [
         {
-          data:[usedSpaces,unusedSpaces],
+          data:[values[2],values[3]],
           backgroundColor: ["#FF6384","#36A2EB",],
         hoverBackgroundColor: ["#FF6384","#36A2EB"]
       }]
     }  });
 
+}
 
+
+$(document).ready(function() {
+
+
+  updateCharts(calculateVariables());
 
 
 });
