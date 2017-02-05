@@ -23,7 +23,7 @@
       <label class="mdl-textfield__label" for="Gender">Gender</label>
     </div><br>
     <div class="mdl-textfield mdl-js-textfield">
-      <input class="mdl-textfield__input" type="text" id="Graduation-Date">
+      <input class="mdl-textfield__input" pattern="(0[1-9]|1[012])[- /.](19|20)\d\d" type="text" id="Graduation-Date">
       <label class="mdl-textfield__label" for="Graduation-Date">Graduation Date (Month and Year)</label>
     </div><br>
     <div class="mdl-textfield mdl-js-textfield">
@@ -59,7 +59,7 @@
       <label class="mdl-textfield__label" for="Monthly-Rent"> Monthly Rent </label>
       <span class="mdl-textfield__error"> input is not in proper format </span>
     </div><br>
-    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button-raised mdl-js-ripple-effect">Submit</button>
+    <button type="submit" onclick="data()" name="submit" class="mdl-button mdl-js-button mdl-button-raised mdl-js-ripple-effect">Submit</button>
     </form>
   </div>
   </div>
@@ -68,16 +68,19 @@
 
 
 <div class="mdl-grid">
+
   <div class="mdl-cell mdl-cell--6-col">
-  <div style="width:500px;height:500px">
-  <canvas id="myChart" width="300" height="300"></canvas>
-</div>
-</div>
-<div class="mdl-cell mdl-cell--6-col">
-  <div style="width:500px;height:500px">
-    <canvas id="pieChart" widht="500" height="500"></canvas>
+    <div class="centered" style="width:500px;height:500px">
+    <canvas id="myChart" width="500" height="500"></canvas>
+    </div>
   </div>
-</div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="centered" style="width:500px">
+    <canvas id="pieChart" width="500" height="500"></canvas>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>

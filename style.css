@@ -3,7 +3,6 @@ body {
 }
 
 #form {
-
   margin: auto;
   text-align:center;
 }
@@ -13,10 +12,10 @@ body {
   margin-top:10px;
   width:500px;
 }
-.mdl-cell--6-col {
-  margin-top:15px;
-  margin-left:750px;;
-}
-canvas {
-  margin:auto;
+
+.centered {
+  padding-left:0;
+  padding-right:0;
+  margin:50px auto;
+  display:block;
 }
