@@ -610,7 +610,7 @@ function updateCharts(values) {
   var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ["Economic Utilization", "Market Rent"],
+          labels: ["Maximum Utilization", "Current Utilization"],
           datasets: [{
               label: '$',
               data: [values[0], values[1]],
@@ -652,8 +652,15 @@ function updateCharts(values) {
 
 }
 
+function switchView() {
+  $(".mdl-grid").toggleClass("hidden");
+  $("#form").toggleClass("hidden");
+}
 
 $(document).ready(function() {
+
+
+
 
 
   updateCharts(calculateVariables());
