@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+ <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css" />
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" >
+</head>
+<body>
+
+<div id="form">
+  <div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card_actions"
+    <form>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" id="Gender">
+      <label class="mdl-textfield__label" for="Gender">Gender</label>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" id="Graduation-Date">
+      <label class="mdl-textfield__label" for="Graduation-Date">Graduation Date (Month and Year)</label>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Zip-code">
+      <label class="mdl-textfield__label" for="Zip-code">Zip Code</label>
+      <span class="mdl-textfield__error"> input is not in proper format </span>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" id="Property-Name">
+      <label class="mdl-textfield__label" for="Property-Name">Property Name</label>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Apartment-Number">
+      <label class="mdl-textfield__label" for="Apartment-Number">Apartment Number</label>
+      <span class="mdl-textfield__error"> input is not in proper format </span>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text"  id="Apartment-Space">
+      <label class="mdl-textfield__label" for="Apartment-Space"> Apartment Space </label>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="(0[1-9]|1[012])[- /.](19|20)\d\d" id="Lease-Start">
+      <label class="mdl-textfield__label" for="Lease-Start">Lease Start Date</label>
+      <span class="mdl-textfield__error"> input is not in proper format </span>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="(0[1-9]|1[012])[- /.](19|20)\d\d" id="Lease-End">
+      <label class="mdl-textfield__label" for="Lease-End">Lease End Date</label>
+      <span class="mdl-textfield__error"> input is not in proper format </span>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="Monthly-Rent">
+      <label class="mdl-textfield__label" for="Monthly-Rent"> Monthly Rent </label>
+      <span class="mdl-textfield__error"> input is not in proper format </span>
+    </div><br>
+    <button type="submit" name="submit" class="mdl-button mdl-js-button mdl-button-raised mdl-js-ripple-effect">Submit</button>
+    </form>
+  </div>
+  </div>
+</div>
+
+
+
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+  <div style="width:500px;height:500px">
+  <canvas id="myChart" width="300" height="300"></canvas>
+</div>
+</div>
+<div class="mdl-cell mdl-cell--6-col">
+  <div style="width:500px;height:500px">
+    <canvas id="pieChart" widht="500" height="500"></canvas>
+  </div>
+</div>
+</div>
+</body>
+</html>

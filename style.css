@@ -1,0 +1,22 @@
+body {
+  background-color: rgba(54, 162, 235, 0.2);
+}
+
+#form {
+
+  margin: auto;
+  text-align:center;
+}
+
+.mdl-card {
+  margin:auto;
+  margin-top:10px;
+  width:500px;
+}
+.mdl-cell--6-col {
+  margin-top:15px;
+  margin-left:750px;;
+}
+canvas {
+  margin:auto;
+}
