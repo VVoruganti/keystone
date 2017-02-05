@@ -553,8 +553,60 @@ var roomArray = [
   ["Greystone Court Aprt","21","B",745,true,"12/14/15","01/13/18",457  ]
 ];
 
+var usedSpaces = 0;
+var unusedSpaces = roomArray.length - usedSpaces;
+var marketRent = 0;
+var actualRent = 0;
+
+
+function calculateVariables() {
+  for(var i  = 0; i < roomArray.length ; i++) {
+    marketRent += roomArray[i][3];
+    if(roomArray[i][4]) {
+      //console.log(typeof(roomArray[i][7]));
+      actualRent += parseInt(roomArray[i][7]);
+      usedSpaces++;
+    }
+  }
+  console.log(actualRent);
+}
+
+function data() {
+  var gender = $("#Gender").val();
+  var graduationDate = $("#Graduation-Date").val();
+  var zipCode = $("#Zip-code").val();
+  var propertyName = $("#Property-Name").val();
+  var apartmentNum = $("#Apartment-Number").val();
+  var apartmentSpace = $("#Apartment-Space").val();
+  var leaseStart = $("#Lease-Start").val();
+  var leaseEnd = $("#Lease-End").val();
+  var monthlyRent = $("#Monthly-Rent").val();
+
+  for(var i =0; i < roomArray.length; i++) {
+    if(propertyName == roomArray[i][0] && apartmentSpace == roomArray[i][2] && apartmentNum == roomArray[i][1] ) {
+      if(roomArray[i][4]) {
+        alert("This Room is Occupied")
+      }
+      else {
+        roomArray[i][7] = monthlyRent;
+        roomArray[i][5] = leaseStart;
+        roomArray[i][6] = leaseEnd;
+        roomArray[i][4] = true;
+        alert("This Room is yours now")
+      }
+      break;
+    }
+  }
+
+  calculateVariables();
+
+
+}
+
+
 $(document).ready(function() {
 
+  calculateVariables()
 
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
@@ -563,7 +615,7 @@ $(document).ready(function() {
           labels: ["Economic Utilization", "Market Rent"],
           datasets: [{
               label: '$',
-              data: [12, 19, 3, 5, 2, 3],
+              data: [marketRent, actualRent],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -594,39 +646,13 @@ $(document).ready(function() {
       labels: ["Occupied Rooms","Unoccupied Rooms"],
       datasets: [
         {
-          data:[12,8],
+          data:[usedSpaces,unusedSpaces],
           backgroundColor: ["#FF6384","#36A2EB",],
         hoverBackgroundColor: ["#FF6384","#36A2EB"]
       }]
     }  });
 
 
+
+
 });
-
-function data() {
-  var gender = $("#Gender").val();
-  var graduationDate = $("#Graduation-Date").val();
-  var zipCode = $("#Zip-code").val();
-  var propertyName = $("#Property-Name").val();
-  var apartmentNum = $("#Apartment-Number").val();
-  var apartmentSpace = $("#Apartment-Space").val();
-  var leaseStart = $("#Lease-Start").val();
-  var leaseEnd = $("#Lease-End").val();
-  var monthlyRent = $("#Monthly-Rent").val();
-
-  for(var i =0; i < roomArray.length; i++) {
-    if(propertyName == roomArray[i][0] && apartmentSpace == roomArray[i][2] && apartmentNum == roomArray[i][1] ) {
-      if(roomArray[i][4]) {
-        alert("This Room is Occupied")
-      }
-      else {
-        roomArray[i][7] = monthlyRent;
-        roomArray[i][5] = leaseStart;
-        roomArray[i][6] = leaseEnd;
-        roomArray[i][4] = true;
-        alert("This Room is yours now")
-      }
-      break;
-    }
-  }
-}
