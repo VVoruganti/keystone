@@ -553,6 +553,77 @@ var roomArray = [
   ["Greystone Court Aprt","21","B",745,true,"12/14/15","01/13/18",457  ]
 ];
 
+var firebaseJSON;
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBQ9HTZdgqYPLimA5NMdAtSQ6vEJQ-tkLI",
+  authDomain: "keystone-reality.firebaseapp.com",
+  databaseURL: "https://keystone-reality.firebaseio.com",
+  storageBucket: "keystone-reality.appspot.com",
+  messagingSenderId: "189134220951"
+};
+firebase.initializeApp(config);
+// Get a reference to the database service
+var database = firebase.database();
+
+
+
+
+/*function initialWrite() {
+  for(var i =0 ; i < roomArray.length ; i++) {
+    var unit = roomArray[i][2];
+    database.ref('/properties/' + roomArray[i][0] + '/' + roomArray[i][1] + '/' + roomArray[i][2] ).update({
+      'tenant-name':'vacant',
+      'actualRent':'vacant'
+    });
+  }
+}*/
+
+//data.ref('/properties/'' + roomArray[0][0] + '/' + roomArray[0][1] + '/' + roomArray[0][2]).update({'tenant-name':'vacant'});
+
+//initialWrite()
+
+/*function dataTest(data) {
+  console.log(data)
+}
+dataTest(database.ref().once('value', function(snapshot){return snapshot.val()}));*/
+
+
+function fireCalculateVariables() {
+  var usedSpaces = 0;
+  var totalSize = 0;
+  var unusedSpaces = totalSize - usedSpaces;
+  var marketRent = 0;
+  var actualRent = 0;
+  database.ref().once('value', function(snapshot){
+    firebaseJSON = snapshot.val().properties
+for(var a in firebaseJSON) {
+  if(firebaseJSON.hasOwnProperty(a)) {
+    for(var b in firebaseJSON[a]) {
+      if(firebaseJSON[a].hasOwnProperty(b)) {
+        for(var c in firebaseJSON[a][b]) {
+          if(firebaseJSON[a][b].hasOwnProperty(c)) {
+            totalSize++;
+            marketRent += parseInt(firebaseJSON[a][b][c]["marketRent"]);
+            if(firebaseJSON[a][b][c]["tenant-name"] != "vacant") {
+              usedSpaces++;
+              actualRent += parseInt(firebaseJSON[a][b][c]["actualRent"]);
+            }
+            unusedSpaces = totalSize - usedSpaces;
+          }
+        }
+      }
+    }
+  }
+}
+var values = [marketRent, actualRent, usedSpaces, unusedSpaces];
+updateCharts(values);
+
+  });
+}
+
+
+
 function calculateVariables() {
   var usedSpaces = 0;
   var unusedSpaces = roomArray.length - usedSpaces;
