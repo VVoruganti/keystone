@@ -15,7 +15,7 @@ body {
 .mdl-card {
   margin:auto;
   margin-top:10px;
-  width:500px;
+  width:750px;
 }
 
 .centered {
@@ -28,4 +28,20 @@ body {
 .mdl-switch {
   margin-left:15px;
   margin-top:15px;
+}
+
+table {
+  margin:auto;
+  margin-top:50px;
+}
+
+.mdl-layout__tab {
+  text-decoration:none;
+}
+.mdl-layout__tab:hover{
+  text-decoration: none;
+}
+
+.mdl-layout__tab:selected{
+  text-decoration: none;
 }

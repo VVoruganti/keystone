@@ -617,6 +617,7 @@ for(var a in firebaseJSON) {
   }
 }
 var values = [marketRent, actualRent, usedSpaces, unusedSpaces];
+console.log(values);
 updateCharts(values);
 
   });
@@ -723,6 +724,10 @@ function updateCharts(values) {
 
 }
 
+function deleteLabel(el) {
+    jQuery(el).addClass("hidden");
+}
+
 function switchView() {
   $(".mdl-grid").toggleClass("hidden");
   $("#form").toggleClass("hidden");
@@ -730,11 +735,10 @@ function switchView() {
 
 $(document).ready(function() {
 
+  $( "#Lease-Start" ).datepicker();
+  $("#Lease-End").datepicker();
 
-
-
-
-  updateCharts(calculateVariables());
+fireCalculateVariables();
 
 
 });
