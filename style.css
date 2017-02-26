@@ -7,6 +7,11 @@ body {
   text-align:center;
 }
 
+.hidden {
+  display:none;
+}
+
+
 .mdl-card {
   margin:auto;
   margin-top:10px;
@@ -18,4 +23,9 @@ body {
   padding-right:0;
   margin:50px auto;
   display:block;
+}
+
+.mdl-switch {
+  margin-left:15px;
+  margin-top:15px;
 }
