@@ -45,3 +45,20 @@ table {
 .mdl-layout__tab:selected{
   text-decoration: none;
 }
+
+.data-table-radio {
+  text-align:center;
+  padding-top:20px;
+  margin-top:20px;
+  margin:auto;
+}
+
+.switch-variables{
+  margin-left: 15px;
+  margin-top:15px;
+}
+
+.table-2016-17 {
+  
+  width:755px;
+}
