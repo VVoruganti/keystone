@@ -81,25 +81,9 @@ function fireCalculateVariables(year) {
 
 
 function switchVariables(value) {
-  fireCalculateVariables(prompt("What year? 2016-17 or 2016-18"));
+  fireCalculateVariables(prompt("What year? 2016-17 or 2017-18"));
 }
 
-function getDataTableData(year){
-  database.ref("/"+ year + "/").once('value', function(snapshot) {
-    var column1 = [];
-    var column2 = [];
-    var column3 = [];
-    var column4 = [];
-    var firebaseJSON = snapshot.val();
-    for(var i in firebaseJSON) {
-       if(firebaseJSON.hasOwnProperty(i)){
-       for(var j in firebaseJSON[i]) {
-         console.log(Object.keys(firebaseJSON["Greystone Court Aprt"].length));
-      }
-    }
-  }
-})
-}
 //getDataTableData("2016-17");
 
 function data() {
@@ -195,6 +179,7 @@ function restrictProperties(el) {
       var data = snapshot.val()
       var properties = Object.keys(data);
       console.log(properties);
+      $("#Property-Name").empty();
       for(var i = 0; i < properties.length; i++){
         $("#Property-Name").append("<option>"+ properties[i] +"<option>");
         console.log(String(properties[i]));
@@ -209,6 +194,7 @@ function restrictApartmentNumber(el){
     database.ref("/" + $("#Academic-Year").val() + "/" + key + "/").once('value',function(snapshot) {
       var data = snapshot.val();
       var properties = Object.keys(data);
+      $("#Apartment-Number").empty()
       for(var i = 0; i < properties.length;i++) {
         $("#Apartment-Number").append("<option>"+ properties[i] + "<option>");
         console.log(String(properties[i]));
@@ -223,6 +209,7 @@ function restrictApartmentSpace(el){
     database.ref("/" + $("#Academic-Year").val() + "/" + $("#Property-Name").val() + "/" + key + "/").once('value',function(snapshot) {
       var data = snapshot.val();
       var properties = Object.keys(data);
+      $("Apartment-Space").empty();
       for(var i = 0; i < properties.length;i++) {
         $("#Apartment-Space").append("<option>"+ properties[i] + "<option>");
         console.log(String(properties[i]));
@@ -231,10 +218,6 @@ function restrictApartmentSpace(el){
   })
 }
 
-function changeTable(){
-  $(".div-table-2016-2017").toggleClass("hidden");
-  $(".div-table-2017-2018").toggleClass("hidden");
-}
 
 $(document).ready(function() {
 
@@ -243,15 +226,7 @@ $(document).ready(function() {
 
   fireCalculateVariables("2016-17");
 
-  $(".table-2016-17").dataTable(
-    {
-        "scrollY":        "700px",
-        "scrollCollapse": true,
-        "paging":         false,
-        "autoWidth":true
-    }
-  );
-  $(".table-2017-18").dataTable(
+  $(".table-all").dataTable(
     {
         "scrollY":        "700px",
         "scrollCollapse": true,
