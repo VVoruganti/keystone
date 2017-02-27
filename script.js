@@ -209,7 +209,7 @@ function restrictApartmentSpace(el){
     database.ref("/" + $("#Academic-Year").val() + "/" + $("#Property-Name").val() + "/" + key + "/").once('value',function(snapshot) {
       var data = snapshot.val();
       var properties = Object.keys(data);
-      $("Apartment-Space").empty();
+      $("#Apartment-Space").empty();
       for(var i = 0; i < properties.length;i++) {
         $("#Apartment-Space").append("<option>"+ properties[i] + "<option>");
         console.log(String(properties[i]));
